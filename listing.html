@@ -1,0 +1,72 @@
+<html>
+	<head>
+		<title>ASTRIO.listing</title>
+		<link rel="stylesheet" type="text/css" href="listing.css"/>
+		<link rel="stylesheet" type="text/javascript" href="listing.js"/>	
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	</head>
+	<body>
+	<div class="container">
+		<div class="row">
+			<div class="back backward">
+				<button id="backward" class="button left"></button>
+			</div>
+			<div class="banner">
+				<img id="mainImage" class="first" src="images/banner.png">
+				<img id="image1" class="second images" src="images/banner.png">
+				<img id="image2" class="second images" src="images/2.jpg">
+				<img id="image3" class="third images" src="images/3.jpg">
+				<img id="image4" class="fourth images" src="images/4.jpg">
+				<img id="image5" class="fifth images" src="images/5.jpg">
+				<img id="image6" class="sixth images" src="images/6.jpg">
+			</div>
+			<div class="back forward">
+				<button id="forward" class="button right"></button>
+			</div>
+		</div>
+	</div>	
+	<script>
+		$(".images").click(function(){
+			$("#mainImage").attr('src', 
+				$(this).attr('src'));
+		});
+
+		var counter = 1;
+		$("#image"+counter).click();
+		$("#backward").click(function (){
+			counter = counter - 1;
+			if(counter < 1){
+				counter = 6;
+			}
+			$("#image"+counter).click();
+		});
+
+		$("#forward").click(function (){
+			counter = counter + 1;
+			if(counter > 6){
+				counter = 1;
+			}
+			$("#image"+counter).click();
+		}); 
+
+		var paused = false;
+	
+		$("#mainImage").click(function (){
+			paused = !paused;
+		});
+	
+		setInterval(function (){
+			if(!paused){
+				$("#forward").click();
+			};
+		}, 4000);
+	</script>
+	</body>
+</html>
+
+
+
+
+
+
+
